@@ -1,2 +1,2 @@
-# CommingSoon
-A Comming Soon Widget
+# ComingSoon
+A Coming Soon Widget
