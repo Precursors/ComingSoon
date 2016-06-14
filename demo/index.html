@@ -1,21 +1,78 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>demo1</title>
-  </head>
-  <body>
-    <div class="container" id="container">
 
-    </div>
-    <script type="text/javascript" src="dist/js/main.js"></script>
-    <script type="text/javascript">
-      addEventListner('load', function() {
-        var coming = new ComingSoon(document.querySelector('#container'), {
-          unit: ['h', 'm', 's']
-        });
-        coming.start();
+<head>
+  <meta charset="utf-8">
+  <title>demo1</title>
+  <link rel="stylesheet" href="../dist/css/main.css" media="screen" title="no title" charset="utf-8">
+</head>
+
+<body>
+  <h1>倒计时</h1>
+  <div class="container" id="container">
+
+  </div>
+  <script src="../dist/js/jquery.min.js"></script>
+  <script src="../dist/js/jquery.knob.js"></script>
+  <script src="../dist/js/jquery.throttle.js"></script>
+  <script src="../dist/js/jquery.classycountdown.js"></script>
+  <script>
+    $(document).ready(function() {
+
+      var now = new Date();
+      var end = new Date('2016/06/14 16:00:00');
+
+      $('#container').ClassyCountdown({
+        end: end.valueOf() / 1e3,
+        now: now.valueOf() / 1e3,
+        labels: true,
+        style: {
+          element: "",
+          textResponsive: .5,
+          days: {
+            gauge: {
+              thickness: .10,
+              bgColor: "rgba(0,0,0,0)",
+              fgColor: "#1abc9c",
+              lineCap: 'round'
+            },
+            textCSS: 'font-weight:300; color:#fff;'
+          },
+          hours: {
+            gauge: {
+              thickness: .10,
+              bgColor: "rgba(0,0,0,0)",
+              fgColor: "#05BEF6",
+              lineCap: 'round'
+            },
+            textCSS: ' font-weight:300; color:#fff;'
+          },
+          minutes: {
+            gauge: {
+              thickness: .10,
+              bgColor: "rgba(0,0,0,0)",
+              fgColor: "#8e44ad",
+              lineCap: 'round'
+            },
+            textCSS: ' font-weight:300; color:#fff;'
+          },
+          seconds: {
+            gauge: {
+              thickness: .10,
+              bgColor: "rgba(0,0,0,0)",
+              fgColor: "#f39c12",
+              lineCap: 'round'
+            },
+            textCSS: ' font-weight:300; color:#fff;'
+          }
+
+        },
+        onEndCallback: function() {
+          console.log("Time out!");
+        }
       });
-    </script>
-  </body>
+    });
+  </script>
+</body>
+
 </html>

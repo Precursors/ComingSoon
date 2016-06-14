@@ -5,10 +5,11 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var ComingSoon = function () {
-  function ComingSoon($dom) {
+  function ComingSoon($dom, config) {
     _classCallCheck(this, ComingSoon);
 
     this.$dom = $dom;
+    this.config = config;
   }
 
   _createClass(ComingSoon, [{
@@ -22,12 +23,23 @@ var ComingSoon = function () {
     value: function restart() {
 
       var $dom = this.$dom;
+      var config = this.config;
+      var unit = config.unit;
+
+      for (var key in unit) {}
     }
   }], [{
     key: 'create',
     value: function create(tagName, attr) {
 
       var tag = document.createElement(tagName);
+
+      for (var key in attr) {
+
+        tag.setAttribute(key, attr[key]);
+      }
+
+      return tag;
     }
   }]);
 
